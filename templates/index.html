@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Home | AQI Analyzer{% endblock %}
+
+{% block content %}
+
+<div class="text-center">
+    <h1 class="mb-4">🌍 Environmental AQI Analyzer</h1>
+    <p class="lead">
+        Analyze air quality trends, explore pollution data, and predict AQI levels using machine learning.
+    </p>
+</div>
+
+<div class="row mt-5">
+
+    <!-- Analysis Card -->
+    <div class="col-md-6 mb-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body text-center">
+                <h3 class="card-title">📊 Data Analysis</h3>
+                <p class="card-text">
+                    Explore air quality trends, pollutant distributions, and insights from environmental data.
+                </p>
+                <a href="/analysis" class="btn btn-primary">View Analysis</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Prediction Card -->
+    <div class="col-md-6 mb-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body text-center">
+                <h3 class="card-title">🤖 AQI Prediction</h3>
+                <p class="card-text">
+                    Predict Air Quality Index based on pollutant levels using a trained machine learning model.
+                </p>
+                <a href="/predict" class="btn btn-success">Predict AQI</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="mt-5">
+    <h4>About This Project</h4>
+    <p>
+        This application provides an end-to-end solution for environmental data analysis.
+        It includes data preprocessing, exploratory data analysis, feature engineering,
+        and machine learning-based AQI prediction. The goal is to help understand air pollution patterns
+        and make informed decisions.
+    </p>
+</div>
+
+{% endblock %}
