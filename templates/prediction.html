@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block title %}Predict AQI | AQI Analyzer{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <!-- Header -->
+    <div class="text-center mb-5">
+        <h1>🤖 AQI Prediction</h1>
+        <p class="lead">Enter pollutant values to predict Air Quality Index</p>
+    </div>
+
+    <!-- Form -->
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <div class="card shadow-sm">
+                <div class="card-body">
+
+                    <form method="POST">
+                        {{ form.hidden_tag() }}
+
+                        <div class="mb-3">
+                            {{ form.pm25.label(class="form-label") }}
+                            {{ form.pm25(class="form-control") }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.pm10.label(class="form-label") }}
+                            {{ form.pm10(class="form-control") }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.no2.label(class="form-label") }}
+                            {{ form.no2(class="form-control") }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.so2.label(class="form-label") }}
+                            {{ form.so2(class="form-control") }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.co.label(class="form-label") }}
+                            {{ form.co(class="form-control") }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.o3.label(class="form-label") }}
+                            {{ form.o3(class="form-control") }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.month.label(class="form-label") }}
+                            {{ form.month(class="form-control") }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.dayofweek.label(class="form-label") }}
+                            {{ form.dayofweek(class="form-control") }}
+                        </div>
+
+                        <div class="d-grid">
+                            {{ form.submit(class="btn btn-success") }}
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Prediction Result -->
+    {% if prediction %}
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+
+            <div class="card text-center shadow-sm border-success">
+                <div class="card-body">
+                    <h3 class="text-success">Predicted AQI</h3>
+                    <h1>{{ prediction }}</h1>
+                    <p class="lead">Category: <strong>{{ category }}</strong></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Error Handling -->
+    {% if error %}
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <div class="alert alert-danger text-center">
+                {{ error }}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+</div>
+
+{% endblock %}
