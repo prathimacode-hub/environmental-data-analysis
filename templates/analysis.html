@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Analysis | AQI Analyzer{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <!-- Header -->
+    <div class="text-center mb-5">
+        <h1>📊 Environmental Data Analysis</h1>
+        <p class="lead">Visual insights from Air Quality Index (AQI) data</p>
+    </div>
+
+    <!-- If images exist -->
+    {% if images and images|length > 0 %}
+
+        <div class="row">
+
+            {% for image in images %}
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-body text-center">
+                        <img 
+                            src="{{ url_for('static', filename='images/' + image) }}" 
+                            class="img-fluid rounded"
+                            alt="{{ image }}"
+                        >
+                    </div>
+
+                    <div class="card-footer text-center">
+                        <small class="text-muted">
+                            {{ image.replace('_', ' ').replace('.png', '').title() }}
+                        </small>
+                    </div>
+
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+
+    {% else %}
+
+        <!-- No images fallback -->
+        <div class="alert alert-warning text-center">
+            <h5>No visualizations available</h5>
+            <p>Please run the analysis pipeline to generate plots.</p>
+        </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}
