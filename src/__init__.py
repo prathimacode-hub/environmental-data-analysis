@@ -1,18 +1,30 @@
-from flask import Flask
-from config.config import config_dict
+# src/__init__.py
 
+"""
+Core data processing and machine learning module
+for Environmental Data Analysis project.
+"""
 
-def create_app(env="development"):
-    """
-    Flask application factory
-    """
-    app = Flask(__name__)
+# Data preprocessing
+from .data_preprocessing import preprocess_data
 
-    # Load configuration
-    app.config.from_object(config_dict[env])
+# Feature engineering
+from .feature_engineering import feature_engineering_pipeline
 
-    # Register Blueprints
-    from .routes import main
-    app.register_blueprint(main)
+# Model utilities
+from .model import (
+    load_model,
+    predict,
+    train_model,
+    evaluate_model,
+)
 
-    return app
+# Utility helpers
+from .utils import (
+    load_csv,
+    save_csv,
+    load_pickle,
+    save_pickle,
+    categorize_aqi,
+    align_features,
+)
